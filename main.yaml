@@ -1,4 +1,4 @@
-- name: Install and Configure Nginx
+- name: Install2 and Configure Nginx
   hosts: all
   become: yes # Execute tasks with elevated privileges (sudo)
 
