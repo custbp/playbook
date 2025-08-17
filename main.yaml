@@ -1,4 +1,4 @@
-- name: Instasama and Configure Nginx
+- name: Instasam22a and Configure Nginx
   hosts: all
   become: yes # Execute tasks with elevated privileges (sudo)
 
