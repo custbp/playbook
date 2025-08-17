@@ -8,7 +8,7 @@ pipeline { // задаем тон groovy, даем понять что здес�
             }
         }
 
-	stage("PIZEDC") {
+	stage("PIZED123C") {
 	    sh 'ansible-playbook'
 	}
     }
