@@ -1,5 +1,5 @@
 - name: Install and Configure Nginx
-  hosts: webservers
+  hosts: all
   become: yes # Execute tasks with elevated privileges (sudo)
 
   tasks:
