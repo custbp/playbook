@@ -1,1 +1,36 @@
-hello
+- name: Install and Configure Nginx
+  hosts: webservers
+  become: yes # Execute tasks with elevated privileges (sudo)
+
+  tasks:
+    - name: Ensure Nginx is installed (Debian/Ubuntu)
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Ensure Nginx is installed (RedHat/CentOS)
+      ansible.builtin.yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Create index.html file
+      ansible.builtin.copy:
+        dest: /usr/share/nginx/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head><title>Ansible Nginx</title></head>
+          <body>
+            <h1>Hello from {{ ansible_hostname }}!</h1>
+          </body>
+          </html>
+        mode: '0644'
+
+    - name: Ensure Nginx service is running and enabled
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
